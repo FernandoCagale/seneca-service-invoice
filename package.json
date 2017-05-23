@@ -1,0 +1,21 @@
+{
+  "name": "seneca-service-invoice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service.js",
+  "scripts": {
+    "start": "node service.js",
+    "linter": "semistandard"
+  },
+  "author": "Fernando Cagale <fernando.b.cagale@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "seneca": "^3.3.0",
+    "seneca-entity": "^2.0.0",
+    "seneca-mongo-store": "^1.1.0"
+  },
+  "devDependencies": {
+    "semistandard": "^11.0.0"
+  }
+}
