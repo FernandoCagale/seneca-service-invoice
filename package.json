@@ -10,10 +10,13 @@
   "author": "Fernando Cagale <fernando.b.cagale@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.5.1",
     "dotenv": "^4.0.0",
     "seneca": "^3.3.0",
-    "amqplib": "^0.5.1",
-    "seneca-entity": "^2.0.0",
+    "seneca-balance-client": "^0.6.1",
+    "seneca-consul-registry": "^0.1.0",
+    "seneca-entity": "^2.0.2",
+    "seneca-mesh": "^0.10.0",
     "seneca-mongo-store": "^1.1.0"
   },
   "devDependencies": {
