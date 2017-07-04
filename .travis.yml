@@ -1,0 +1,32 @@
+language: node_js
+sudo: false
+
+node_js:
+  - "8.1.0"
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libgnome-keyring-dev
+      - g++-4.9
+
+before_install:
+  - npm install -g node-gyp
+
+services:
+  - mongodb
+  - rabbitmq
+
+cache:
+  directories:
+    node_modules
+
+install:
+  - pwd 
+  - npm install 
+  - npm run linter
+
+env:
+- CXX=g++-4.9
