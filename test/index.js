@@ -25,7 +25,7 @@ function testSeneca (fin) {
     .use(require('../lib/invoice'));
 }
 
-describe('test invoice', () => {
+describe('test INVOICE', () => {
   let _id;
 
   it('create', (fin) => {
@@ -92,12 +92,30 @@ describe('test invoice', () => {
     .ready(fin);
   });
 
+  it('findById not found', (fin) => {
+    const seneca = testSeneca(fin);
+
+    const pattern = {
+      role: ROLE,
+      cmd: 'findById',
+      id: '595a66789f14e52b68b28d3w'
+    };
+
+    seneca
+    .gate()
+    .act(pattern, (ignore, result) => {
+      expect(result.ok).to.equal(false);
+      expect(result.why).to.equal('ID not found');
+    })
+    .ready(fin);
+  });
+
   it('update', (fin) => {
     const seneca = testSeneca(fin);
 
     const pattern = {
       role: ROLE,
-      cmd: 'create',
+      cmd: 'update',
       id: _id,
       emission: '06/06/2017',
       price: 50.00,
@@ -114,6 +132,28 @@ describe('test invoice', () => {
       expect(result.invoice.orderId).to.equal('595a66789f14e52b68b28d3a');
       expect(result.invoice.id).to.exist();
       expect(result.ok).to.equal(true);
+    })
+    .ready(fin);
+  });
+
+  it('update not found', (fin) => {
+    const seneca = testSeneca(fin);
+
+    const pattern = {
+      role: ROLE,
+      cmd: 'update',
+      id: '595a66789f14e52b68b28d3c',
+      emission: '06/06/2017',
+      price: 50.00,
+      orderId: '595a66789f14e52b68b28d3a',
+      client: 'Client test - alter'
+    };
+
+    seneca
+    .gate()
+    .act(pattern, (ignore, result) => {
+      expect(result.ok).to.equal(false);
+      expect(result.why).to.equal('ID not found');
     })
     .ready(fin);
   });
@@ -135,13 +175,13 @@ describe('test invoice', () => {
     .ready(fin);
   });
 
-  it('findById not found', (fin) => {
+  it('remove not found', (fin) => {
     const seneca = testSeneca(fin);
 
     const pattern = {
       role: ROLE,
-      cmd: 'findById',
-      id: _id
+      cmd: 'remove',
+      id: '595a66789f14e52b68b28d3a'
     };
 
     seneca
@@ -153,4 +193,3 @@ describe('test invoice', () => {
     .ready(fin);
   });
 });
-
