@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node service.js",
     "linter": "semistandard",
-    "test": "set NODE_ENV=test&& node test"
+    "test": "./node_modules/.bin/lab -l -v -m 60000 test"
   },
   "author": "Fernando Cagale <fernando.b.cagale@gmail.com>",
   "license": "ISC",
