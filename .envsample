@@ -3,7 +3,6 @@ PORT=9003
 URI=mongodb://127.0.0.1:27017/seneca-invoice
 
 AMQP_URL=amqp://localhost
-
 CONSUL_ADDR=127.0.0.1
 
 ADDR=127.0.0.1
